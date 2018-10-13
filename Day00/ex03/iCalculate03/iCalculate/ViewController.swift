@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     var numberBefore:Double = 0;
     var resultValue:Double = 0;
     var canCalculate:Bool = false;
+    var canOperate:Bool = false;
     var operation:String = "";
     var resultString:String = "";
     var newString:String = "";
@@ -30,6 +31,7 @@ class ViewController: UIViewController {
         resultString += newString;
         resultLabel.text = resultString;
         print(newString);
+        canOperate = true;
     }
     
     @IBAction func onClick2(_ sender: UIButton) {
@@ -37,6 +39,7 @@ class ViewController: UIViewController {
         resultString += newString;
         resultLabel.text = resultString
         print(newString);
+        canOperate = true;
     }
     
     @IBAction func onClick3(_ sender: UIButton) {
@@ -44,6 +47,7 @@ class ViewController: UIViewController {
         resultString += newString;
         resultLabel.text = resultString
         print(newString);
+        canOperate = true;
     }
     
     @IBAction func onClick4(_ sender: UIButton) {
@@ -51,6 +55,7 @@ class ViewController: UIViewController {
         resultString += newString;
         resultLabel.text = resultString
         print(newString);
+        canOperate = true;
     }
     
     @IBAction func onClick5(_ sender: UIButton) {
@@ -58,6 +63,7 @@ class ViewController: UIViewController {
         resultString += newString;
         resultLabel.text = resultString
         print(newString);
+        canOperate = true;
     }
     
     @IBAction func onClick6(_ sender: UIButton) {
@@ -65,6 +71,7 @@ class ViewController: UIViewController {
         resultString += newString;
         resultLabel.text = resultString
         print(newString);
+        canOperate = true;
     }
     
     @IBAction func onClick7(_ sender: UIButton) {
@@ -72,6 +79,7 @@ class ViewController: UIViewController {
         resultString += newString;
         resultLabel.text = resultString
         print(newString);
+        canOperate = true;
     }
     
     @IBAction func onClick8(_ sender: UIButton) {
@@ -79,6 +87,7 @@ class ViewController: UIViewController {
         resultString += newString;
         resultLabel.text = resultString
         print(newString);
+        canOperate = true;
     }
     
     @IBAction func onClick9(_ sender: UIButton) {
@@ -86,6 +95,7 @@ class ViewController: UIViewController {
         resultString += newString;
         resultLabel.text = resultString
         print(newString);
+        canOperate = true;
     }
     
     @IBAction func onClick0(_ sender: UIButton) {
@@ -93,26 +103,39 @@ class ViewController: UIViewController {
         resultString += newString;
         resultLabel.text = resultString
         print(newString);
+        canOperate = true;
     }
     
     @IBAction func onClickPlus(_ sender: UIButton) {
-        calculate(sign: "+");
-        print("+");
+        if (canOperate == true){
+            calculate(sign: "+");
+            print("+");
+            canOperate = false;
+        }
     }
     
     @IBAction func onClickMinus(_ sender: UIButton) {
-        calculate(sign: "-");
-        print("-");
+        if (canOperate == true){
+            calculate(sign: "-");
+            print("-");
+            canOperate = false;
+        }
     }
     
     @IBAction func onClickDivide(_ sender: UIButton) {
-        calculate(sign: "/");
-        print("/");
+        if (canOperate == true){
+            calculate(sign: "/");
+            print("/");
+            canOperate = false;
+        }
     }
     
     @IBAction func onClickMultiply(_ sender: UIButton) {
-        calculate(sign: "*");
-        print("*");
+        if (canOperate == true){
+            calculate(sign: "*");
+            print("*");
+            canOperate = false;
+        }
     }
     
     @IBAction func onClickNegate(_ sender: UIButton) {
@@ -128,8 +151,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func onClickEquals(_ sender: UIButton) {
-        calculate(sign: "=");
-        print("=");
+        if (canOperate == true){
+            calculate(sign: "=");
+            print("=");
+            canOperate = false;
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -142,10 +168,22 @@ class ViewController: UIViewController {
         numberBefore = 0;
         resultValue = 0;
         canCalculate = false;
+        canOperate = false;
         operation = "";
         resultString = "";
         newString = "";
         resultLabel.text = "0";
+    }
+    
+    func clearFunc(){
+        numberOnScreen = 0;
+        numberBefore = 0;
+        resultValue = 0;
+        canCalculate = false;
+        canOperate = false;
+        operation = "";
+        resultString = "";
+        newString = "";
     }
     
     func calculate(sign: String){
@@ -216,6 +254,7 @@ class ViewController: UIViewController {
         }
         if(sign == "="){
             doMath(sign: sign);
+            clearFunc();
         }
     }
     
@@ -248,7 +287,17 @@ class ViewController: UIViewController {
             operation = "";
             resultValue = numberBefore  * numberOnScreen;
         }
-        resultLabel.text = String(resultValue)
+        //resultLabel.text = String(resultValue);
+        //print();
+        printResult(result: resultValue)
     }
 
+    func printResult(result: Double){
+        if (floor(result) == result) {
+            let intRes:Int = Int(result);
+            resultLabel.text = String(intRes);
+        }else{
+            resultLabel.text = String(result);
+        }
+    }
 }

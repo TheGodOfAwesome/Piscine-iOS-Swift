@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import iCalculate02
+@testable import iCalculate
 
 class iCalculate02Tests: XCTestCase {
     
