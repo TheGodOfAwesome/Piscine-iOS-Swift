@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'kmuvezwa2018_Example' do
+  pod 'kmuvezwa2018', :path => '../'
+
+  target 'kmuvezwa2018_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

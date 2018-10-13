@@ -1,0 +1,6 @@
+framework module kmuvezwa2018 {
+  umbrella header "kmuvezwa2018-umbrella.h"
+
+  export *
+  module * { export * }
+}

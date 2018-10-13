@@ -1,0 +1,16 @@
+PODS:
+  - kmuvezwa2018 (0.1.0)
+
+DEPENDENCIES:
+  - kmuvezwa2018 (from `../`)
+
+EXTERNAL SOURCES:
+  kmuvezwa2018:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  kmuvezwa2018: 57ccb9e31353e04f7d870bf5a7126e8dbf511292
+
+PODFILE CHECKSUM: 3226580a2d9975f5b7b721beee11cb5b42c6b874
+
+COCOAPODS: 1.5.3
